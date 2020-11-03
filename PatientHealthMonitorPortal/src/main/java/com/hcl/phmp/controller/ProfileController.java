@@ -5,41 +5,33 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hcl.phmp.model.Users;
+import com.hcl.phmp.model.Profile;
 import com.hcl.phmp.service.UserServiceImpl;
-
-/**
- * @author kowshik.kotha
- *
- */
-
 @Controller
 @RequestMapping("/user")
-public class RegistrationController {
+public class ProfileController {
 	@Autowired
 	public UserServiceImpl userService;
 
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView add(@Valid Users user, BindingResult result) {
+	@RequestMapping(value = "/profile", method = RequestMethod.POST)
+	public ModelAndView add(@Valid Profile profile, BindingResult result) {
 		if (result.hasErrors()) {
 			return new ModelAndView("register");
 		} else {
-			if (userService.register(user))
-				return new ModelAndView("registrationSuccess");
+			if (userService.profile(profile))
+				return new ModelAndView("profile");
 			else
-				return new ModelAndView("registrationFailed");
+				return new ModelAndView("profileFailed");
 		}
 	}
-
-	@RequestMapping("/registration")
+	@RequestMapping("/profile")
 	public ModelAndView add() {
 		// return new ModelAndView("redirect:user/registration");
-		return new ModelAndView("register", "users", new Users());
+		return new ModelAndView("profile", "profile", new Profile());
 
 	}
 }

@@ -1,7 +1,11 @@
 package com.hcl.phmp.model;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Login {
+	@NotEmpty
 private String userName;
+	@NotEmpty
 private String password;
 	public Login() {
 		// TODO Auto-generated constructor stub

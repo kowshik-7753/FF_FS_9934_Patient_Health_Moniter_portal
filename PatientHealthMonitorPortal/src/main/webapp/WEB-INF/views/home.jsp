@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<pre>
 <a href="profile">Profile</a>
-<a href="bmiCalculator">body mass index calculator</a>
+<a href="bmiCalculator">Body Mass Index Calculator</a>
+<a href="bloodCount">Blood Count</a>
+</pre>
 </body>
 </html>

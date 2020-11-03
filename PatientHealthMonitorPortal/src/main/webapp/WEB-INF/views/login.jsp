@@ -28,7 +28,7 @@
 				<tr>
 					<td align="center" colspan="2"><input type="submit"
 						value="Login">
-						<a href="register">Register</a></td>
+						<a href="registration">Register</a></td>
 				</tr>
 			</table>
 		</form:form>

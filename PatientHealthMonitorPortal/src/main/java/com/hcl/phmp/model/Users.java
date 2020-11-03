@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.hcl.phmp.model;
 
 import javax.persistence.Column;
@@ -9,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @author kowshik.kotha
@@ -18,18 +16,36 @@ import javax.persistence.Table;
 @Table(name="Users")
 public class Users {
 @Id
-@GeneratedValue(strategy = GenerationType.AUTO)
+//@GeneratedValue(strategy = GenerationType.AUTO)
 @Column(name="loginId")
-private String loginId;
+private String userId;
+@NotEmpty
+@Column
 private String password;
+@NotEmpty
+@Column
 private String firstName;
+@NotEmpty
+@Column
 private String lastName;
+@Column
 private int age;
+@NotEmpty
+@Column
 private String gender;
+@NotEmpty
+@Column
 private String contactNumber;
+@NotEmpty
+@Column
 private String email;
+@NotEmpty
+@Column
 private String address;
+@Column
 private int zipCode;
+@NotEmpty
+@Column
 private String city;
 	public Users() {
 		// TODO Auto-generated constructor stub
@@ -37,14 +53,14 @@ private String city;
 	/**
 	 * @return the loginId
 	 */
-	public String getLoginId() {
-		return loginId;
+	public String getUserId() {
+		return userId;
 	}
 	/**
 	 * @param loginId the loginId to set
 	 */
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	/**
 	 * @return the password
@@ -171,7 +187,7 @@ private String city;
 	 */
 	@Override
 	public String toString() {
-		return "Users [loginId=" + loginId + ", password=" + password + ", firstName=" + firstName + ", lastName="
+		return "Users [loginId=" + userId + ", password=" + password + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", age=" + age + ", gender=" + gender + ", contactNumber=" + contactNumber + ", email="
 				+ email + ", address=" + address + ", zipCode=" + zipCode + ", city=" + city + "]";
 	}

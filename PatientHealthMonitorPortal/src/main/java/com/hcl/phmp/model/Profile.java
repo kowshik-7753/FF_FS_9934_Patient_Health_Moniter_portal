@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @author kowshik.kotha
@@ -17,17 +18,40 @@ import javax.persistence.Table;
 public class Profile {
 @Id
 @Column(name="userName")
+@NotEmpty
 private String userName;
+@NotEmpty
+@Column
 private String password;
+@NotEmpty
+@Column
 private String dateOfBirth;
+@NotEmpty
+@Column
 private String email;
+@NotEmpty
+@Column
 private String contactNumber;
+@NotEmpty
+@Column
 private String address;
+@NotEmpty
+@Column
 private String city;
+@NotEmpty
+@Column
 private String country;
+@NotEmpty
+@Column
 private int pinCode;
+@NotEmpty
+@Column
 private String gender;
+@NotEmpty
+@Column
 private String gaurdianFistName;
+@NotEmpty
+@Column
 private String GaurdianLastName;
 
 
