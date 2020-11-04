@@ -1,8 +1,7 @@
 package com.hcl.phmp.repository;
 
+import java.math.BigInteger;
 import java.util.List;
-
-
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,7 +16,6 @@ import com.hcl.phmp.model.Login;
 import com.hcl.phmp.model.Profile;
 import com.hcl.phmp.model.Users;
 import com.hcl.phmp.util.HibernateUtil;
-
 
 /**
  * @author kowshik.kotha
@@ -55,29 +53,36 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean login(Login login) {
-	try {
-			StandardServiceRegistry ssr = new StandardServiceRegistryBuilder()
-					.configure("hibernate.cfg.xml").build();
-			Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
-			SessionFactory factory = meta.getSessionFactoryBuilder().build();
-			Session session = factory.openSession();
-			Query query = session.createQuery("select * from Users");
-			List<Users> userlist = query.list();
-			for (Users user : userlist) {
-			System.out.println(user.getUserId());
-			
-				if (user.getUserId().equals(login.getUserName()) && user.getPassword().equals(login.getPassword())) {
-					return true;
-				}
-
-			}
-			return false;
-		} catch (Exception e) {
-			System.out.println("Error occured during fetching the data " + e.getMessage());
+		/*
+		 * try { StandardServiceRegistry ssr = new StandardServiceRegistryBuilder()
+		 * .configure("hibernate.cfg.xml").build(); Metadata meta = new
+		 * MetadataSources(ssr).getMetadataBuilder().build(); SessionFactory factory =
+		 * meta.getSessionFactoryBuilder().build(); Session session =
+		 * factory.openSession(); Query query =
+		 * session.createQuery("select * from Users"); List<Users> userlist =
+		 * query.list(); for (Users user : userlist) {
+		 * System.out.println(user.getUserId());
+		 * 
+		 * if (user.getUserId().equals(login.getUserName()) &&
+		 * user.getPassword().equals(login.getPassword())) { return true; }
+		 * 
+		 * } return false; } catch (Exception e) {
+		 * System.out.println("Error occured during fetching the data " +
+		 * e.getMessage()); return false; }
+		 */
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		String selQuery = ("select count(distinct (loginId)) from users u where u.loginId ='" + login.getUserName()
+				+ "' and u.password='" + login.getPassword() + "'");
+		Query query = session.createSQLQuery(selQuery);
+		Integer temp =  ((BigInteger)query.getResultList().get(0)).intValue();
+		if (temp != 0) {
+			return true;
+		} else {
 			return false;
 		}
-		//return true;
 	}
+
 	@Override
 	public boolean profile(Profile profile) {
 		try {

@@ -41,7 +41,6 @@ private String city;
 @NotEmpty
 @Column
 private String country;
-@NotEmpty
 @Column
 private int pinCode;
 @NotEmpty
