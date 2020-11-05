@@ -14,7 +14,7 @@
 				<tr>
 					<td>Patient Id</td>
 					<td><form:input type="text" path="patientId"
-							style="width: 120px" placeholder="Enter your patient id" /><font
+							style="width: 120px" placeholder="Enter patient id" /><font
 						color="red"><form:errors path="patientId"></form:errors></font></td>
 				</tr>
 				<tr>
@@ -28,6 +28,12 @@
 					<td><form:input type="text" path="weight"
 							style="width: 120px" /><font color="red"><form:errors
 								path="weight"></form:errors></font></td>
+				</tr>
+				<tr>
+					<td>Date</td>
+					<td><form:input type="date" path="currentDate"
+							style="width: 120px" /><font color="red"><form:errors
+								path="currentDate"></form:errors></font></td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2"><input type="submit"

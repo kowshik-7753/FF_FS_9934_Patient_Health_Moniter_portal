@@ -1,18 +1,15 @@
 package com.hcl.phmp.repository;
 
 import java.math.BigInteger;
-import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.hcl.phmp.model.BloodCount;
+import com.hcl.phmp.model.Diabetes;
 import com.hcl.phmp.model.Login;
+import com.hcl.phmp.model.PatientBMI;
 import com.hcl.phmp.model.Profile;
 import com.hcl.phmp.model.Users;
 import com.hcl.phmp.util.HibernateUtil;
@@ -53,23 +50,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean login(Login login) {
-		/*
-		 * try { StandardServiceRegistry ssr = new StandardServiceRegistryBuilder()
-		 * .configure("hibernate.cfg.xml").build(); Metadata meta = new
-		 * MetadataSources(ssr).getMetadataBuilder().build(); SessionFactory factory =
-		 * meta.getSessionFactoryBuilder().build(); Session session =
-		 * factory.openSession(); Query query =
-		 * session.createQuery("select * from Users"); List<Users> userlist =
-		 * query.list(); for (Users user : userlist) {
-		 * System.out.println(user.getUserId());
-		 * 
-		 * if (user.getUserId().equals(login.getUserName()) &&
-		 * user.getPassword().equals(login.getPassword())) { return true; }
-		 * 
-		 * } return false; } catch (Exception e) {
-		 * System.out.println("Error occured during fetching the data " +
-		 * e.getMessage()); return false; }
-		 */
+		try {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		String selQuery = ("select count(distinct (loginId)) from users u where u.loginId ='" + login.getUserName()
@@ -81,6 +62,10 @@ public class UserDAOImpl implements UserDAO {
 		} else {
 			return false;
 		}
+		}catch(Exception e) {
+			System.out.println("Execption occours during fetching"+e.getMessage());
+			return false;
+		}
 	}
 
 	@Override
@@ -88,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			Profile profile1 = new Profile();
+			/*Profile profile1 = new Profile();
 			profile1.setUserName(profile.getUserName());
 			profile1.setPassword(profile.getPassword());
 			profile1.setGender(profile.getGender());
@@ -99,14 +84,74 @@ public class UserDAOImpl implements UserDAO {
 			profile1.setCountry(profile.getCountry());
 			profile1.setCity(profile.getCity());
 			profile1.setPinCode(profile.getPinCode());
-			session.save(profile1);
+			profile1.setGaurdian_FirstName(profile.getGaurdian_FirstName());
+			profile1.setGaurdian_LastName(profile.getGaurdian_LastName());*/
+			session.save(profile);
 			session.getTransaction().commit();
-			HibernateUtil.shutdown();
+			//HibernateUtil.shutdown();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
 			return false;
 		}
 	}
+	@Override
+	public boolean bmiCalculator(PatientBMI patientBMI) {
+		try {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		PatientBMI patientBMI1= new PatientBMI();
+		patientBMI1.setPatientId(patientBMI.getPatientId());
+		patientBMI1.setHeight(patientBMI.getHeight());
+		patientBMI1.setWeight(patientBMI.getWeight());
+		patientBMI1.setCurrentDate(patientBMI.getCurrentDate());
+		float h=patientBMI.getHeight();
+		float w=patientBMI.getWeight();
+		patientBMI1.setBmi(w/(h*h));
+		session.save(patientBMI1);
+		session.getTransaction().commit();
+		HibernateUtil.shutdown();
+		return true;
+		}
+		catch (Exception e) {
+			System.out.println("Exception occured during inserting data:" + e);
+			return false;
+		}
+	}
+	@Override
+	public boolean bloodCount(BloodCount bloodCount) {	try {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.save(bloodCount);
+		session.getTransaction().commit();
+		HibernateUtil.shutdown();
+		return true;
+		}
+		catch (Exception e) {
+			System.out.println("Exception occured during inserting data:" + e);
+			return false;
+		}}
+	@Override
+	public boolean diabetes(Diabetes diabetes) {	try {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		Diabetes diabetes1 = new Diabetes();
+		diabetes1.setPatientId(diabetes.getPatientId());
+		diabetes1.setbPDiastolicValue(diabetes.getbPDiastolicValue());
+		diabetes1.setbPSystolicValue(diabetes.getbPSystolicValue());
+		diabetes1.setFastingGlucose(diabetes.getFastingGlucose());
+		diabetes1.sethDLCholesterol(diabetes.gethDLCholesterol());
+		diabetes1.setSerumTriglycerides(diabetes.getSerumTriglycerides());
+		diabetes1.setBmi(diabetes.getBmi());
+		diabetes1.setRiskofDiabetes(50);
+		session.save(diabetes1);
+		session.getTransaction().commit();
+		HibernateUtil.shutdown();
+		return true;
+		}
+		catch (Exception e) {
+			System.out.println("Exception occured during inserting data:" + e);
+			return false;
+		}}
 
 }

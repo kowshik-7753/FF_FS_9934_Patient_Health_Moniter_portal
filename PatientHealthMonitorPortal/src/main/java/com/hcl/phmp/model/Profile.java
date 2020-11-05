@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.hcl.phmp.model;
 
 import javax.persistence.Column;
@@ -46,12 +43,10 @@ private int pinCode;
 @NotEmpty
 @Column
 private String gender;
-@NotEmpty
 @Column
-private String gaurdianFistName;
-@NotEmpty
-@Column
-private String GaurdianLastName;
+private String guardian_FirstName;
+@Column()
+private String guardian_LastName;
 
 
 	
@@ -233,6 +228,42 @@ private String GaurdianLastName;
 
 
 	/**
+	 * @return the guardian_FirstName
+	 */
+	public String getGuardian_FirstName() {
+		return guardian_FirstName;
+	}
+
+
+
+	/**
+	 * @param guardian_FirstName the guardian_FirstName to set
+	 */
+	public void setGuardian_FirstName(String guardian_FirstName) {
+		this.guardian_FirstName = guardian_FirstName;
+	}
+
+
+
+	/**
+	 * @return the guardian_LastName
+	 */
+	public String getGuardian_LastName() {
+		return guardian_LastName;
+	}
+
+
+
+	/**
+	 * @param guardian_LastName the guardian_LastName to set
+	 */
+	public void setGuardian_LastName(String guardian_LastName) {
+		this.guardian_LastName = guardian_LastName;
+	}
+
+
+
+	/**
 	 * @param gender the gender to set
 	 */
 	public void setGender(String gender) {
@@ -241,40 +272,8 @@ private String GaurdianLastName;
 
 
 
-	/**
-	 * @return the gaurdianFistName
-	 */
-	public String getGaurdianFistName() {
-		return gaurdianFistName;
-	}
-
-
-
-	/**
-	 * @param gaurdianFistName the gaurdianFistName to set
-	 */
-	public void setGaurdianFistName(String gaurdianFistName) {
-		this.gaurdianFistName = gaurdianFistName;
-	}
-
-
-
-	/**
-	 * @return the gaurdianLastName
-	 */
-	public String getGaurdianLastName() {
-		return GaurdianLastName;
-	}
-
-
-
-	/**
-	 * @param gaurdianLastName the gaurdianLastName to set
-	 */
-	public void setGaurdianLastName(String gaurdianLastName) {
-		GaurdianLastName = gaurdianLastName;
-	}
-
+	
+	
 
 
 	/* (non-Javadoc)
@@ -284,8 +283,8 @@ private String GaurdianLastName;
 	public String toString() {
 		return "Profile [userName=" + userName + ", password=" + password + ", dateOfBirth=" + dateOfBirth + ", email="
 				+ email + ", contactNumber=" + contactNumber + ", address=" + address + ", city=" + city + ", country="
-				+ country + ", pinCode=" + pinCode + ", gender=" + gender + ", gaurdianFistName=" + gaurdianFistName
-				+ ", GaurdianLastName=" + GaurdianLastName + "]";
+				+ country + ", pinCode=" + pinCode + ", gender=" + gender + ", gaurdianFistName=" + guardian_FirstName
+				+ ", GaurdianLastName=" + guardian_LastName + "]";
 	}
 
 }

@@ -9,29 +9,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hcl.phmp.model.Diabetes;
 import com.hcl.phmp.model.Profile;
 import com.hcl.phmp.service.UserServiceImpl;
+
 @Controller
 @RequestMapping("/user")
-public class ProfileController {
+public class DiabetesController {
 	@Autowired
 	public UserServiceImpl userService;
 
-	@RequestMapping(value = "/profile", method = RequestMethod.POST)
-	public ModelAndView add(@Valid Profile profile, BindingResult result) {
+	@RequestMapping(value = "/diabetes", method = RequestMethod.POST)
+	public ModelAndView add(@Valid Diabetes diabetes, BindingResult result) {
 		if (result.hasErrors()) {
-			return new ModelAndView("profile");
+			return new ModelAndView("diabetes");
 		} else {
-			if (userService.profile(profile))
+			if (userService.diabetes(diabetes))
 				return new ModelAndView("home");
 			else
 				return new ModelAndView("profileFailed");
 		}
 	}
-	@RequestMapping("/profile")
+	@RequestMapping("/diabetes")
 	public ModelAndView add() {
 		// return new ModelAndView("redirect:user/registration");
-		return new ModelAndView("profile", "profile", new Profile());
+		return new ModelAndView("diabetes", "diabetes", new Diabetes());
 
 	}
 }

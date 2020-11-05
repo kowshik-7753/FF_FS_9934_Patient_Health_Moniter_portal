@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td>Date Of Birth</td>
-					<td><form:input type="text" path="dateOfBirth" style="width: 170px"
+					<td><form:input type="date" path="dateOfBirth" style="width: 170px"
 							placeholder="Enter Date of Birth" /><font color="red"><form:errors
 								path="dateOfBirth"></form:errors></font></td>
 				</tr>
@@ -78,15 +78,15 @@
 				</tr>
 				<tr>
 					<td>Guardian First Name</td>
-					<td><form:input type="text" path="gaurdianFistName"
+					<td><form:input type="text" path="guardian_FirstName"
 							style="width: 170px" placeholder="Enter Guardian first Name" /><font
-						color="red"><form:errors path="gaurdianFistName"></form:errors></font></td>
+						color="red"><form:errors path="guardian_FirstName"></form:errors></font></td>
 				</tr>
 				<tr>
 					<td>Guardian Last Name</td>
-					<td><form:input type="text" path="GaurdianLastName"
+					<td><form:input type="text" path="guardian_LastName"
 							style="width: 170px" placeholder="Enter guardian  Last Name" /><font
-						color="red"><form:errors path="GaurdianLastName"></form:errors></font></td>
+						color="red"><form:errors path="guardian_LastName"></form:errors></font></td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2"><input type="submit"

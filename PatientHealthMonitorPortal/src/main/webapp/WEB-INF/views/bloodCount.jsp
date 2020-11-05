@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div align="center">
-		<form:form action="bmiCalculator" method="post" modelAttribute="bmiCalculator">
+		<form:form action="bloodCount" method="post" modelAttribute="bloodCount">
 			<table border=1>
 				<tr>
 					<td>Patient Id</td>

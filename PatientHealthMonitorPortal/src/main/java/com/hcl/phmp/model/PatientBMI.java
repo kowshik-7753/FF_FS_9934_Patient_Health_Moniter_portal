@@ -18,9 +18,13 @@ public class PatientBMI {
 	@Id
 	@Column(name="patientId")
 private String patientId;
+	@Column
 private float height;
+	@Column
 private float weight;
+	@Column
 private float bmi;
+	@Column
 private String currentDate;
 	public PatientBMI() {
 		// TODO Auto-generated constructor stub

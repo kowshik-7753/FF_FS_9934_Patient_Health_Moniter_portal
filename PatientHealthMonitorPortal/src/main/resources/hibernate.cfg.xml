@@ -14,5 +14,8 @@
           <property name="show_sql">true</property>
           <mapping class="com.hcl.phmp.model.Users" />
           <mapping class="com.hcl.phmp.model.Profile" />
+          <mapping class="com.hcl.phmp.model.PatientBMI" />
+          <mapping class="com.hcl.phmp.model.BloodCount" />
+          
       </session-factory>
   </hibernate-configuration>
