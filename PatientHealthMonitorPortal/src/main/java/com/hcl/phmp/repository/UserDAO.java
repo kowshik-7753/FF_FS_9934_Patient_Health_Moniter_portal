@@ -1,5 +1,7 @@
 package com.hcl.phmp.repository;
 
+import java.util.List;
+
 import com.hcl.phmp.model.BloodCount;
 import com.hcl.phmp.model.Diabetes;
 import com.hcl.phmp.model.Login;
@@ -23,4 +25,6 @@ public interface UserDAO {
 	boolean bloodCount(BloodCount bloodCount);
 	
 	boolean diabetes(Diabetes diabetes);
+	
+	List<BloodCount> bloodCount(String id);
 }

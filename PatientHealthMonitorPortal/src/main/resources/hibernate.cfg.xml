@@ -16,6 +16,7 @@
           <mapping class="com.hcl.phmp.model.Profile" />
           <mapping class="com.hcl.phmp.model.PatientBMI" />
           <mapping class="com.hcl.phmp.model.BloodCount" />
+           <mapping class="com.hcl.phmp.model.Diabetes" />
           
       </session-factory>
   </hibernate-configuration>

@@ -1,5 +1,7 @@
 package com.hcl.phmp.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.hcl.phmp.model.BloodCount;
@@ -51,6 +53,12 @@ public class UserServiceImpl implements UserService {
 	public boolean diabetes(Diabetes diabetes) {
 		UserDAOImpl userDAO = new UserDAOImpl();
 		return userDAO.diabetes(diabetes);
+	}
+
+	@Override
+	public List<BloodCount> bloodCount(String id) {
+		UserDAOImpl userDAO = new UserDAOImpl();
+		return userDAO.bloodCount(id);
 	}
 	
    

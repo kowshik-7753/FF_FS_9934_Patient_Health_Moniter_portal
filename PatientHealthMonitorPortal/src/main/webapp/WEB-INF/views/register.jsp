@@ -43,8 +43,8 @@
 					<td>Gender</td>
 					<td><form:select path="gender" id="gender"
 							style="width: 170px">
-							<option value=1>Male</option>
-							<option value=2>Female</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
 						</form:select></td>
 				</tr>
 				<tr>

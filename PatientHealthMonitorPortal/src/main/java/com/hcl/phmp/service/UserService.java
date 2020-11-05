@@ -3,6 +3,8 @@
  */
 package com.hcl.phmp.service;
 
+import java.util.List;
+
 import com.hcl.phmp.model.BloodCount;
 import com.hcl.phmp.model.Diabetes;
 import com.hcl.phmp.model.Login;
@@ -26,5 +28,7 @@ public interface UserService {
 	boolean bloodCount(BloodCount bloodCount);
 	
 	boolean diabetes(Diabetes diabetes);
+	
+     List<BloodCount> bloodCount(String id);
 	
 }

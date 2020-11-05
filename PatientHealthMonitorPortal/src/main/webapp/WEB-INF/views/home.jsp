@@ -11,6 +11,7 @@
 <a href="profile">Profile</a>
 <a href="bmiCalculator">Body Mass Index Calculator</a>
 <a href="bloodCount">Blood Count</a>
+<a href="diabetes">Risk Of Diabetes</a>
 </pre>
 </body>
 </html>

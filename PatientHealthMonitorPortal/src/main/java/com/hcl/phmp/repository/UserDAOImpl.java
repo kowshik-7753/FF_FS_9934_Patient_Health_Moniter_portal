@@ -1,6 +1,7 @@
 package com.hcl.phmp.repository;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -26,8 +27,10 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
+			String str=user.getLastName();
+			
 			Users user1 = new Users();
-			user1.setUserId("12346");
+			user1.setUserId("PHMP"+str.substring(0,3));
 			user1.setFirstName(user.getFirstName());
 			user1.setLastName(user.getLastName());
 			user1.setPassword(user.getPassword());
@@ -40,7 +43,7 @@ public class UserDAOImpl implements UserDAO {
 			user1.setCity(user.getCity());
 			session.save(user1);
 			session.getTransaction().commit();
-			HibernateUtil.shutdown();
+			//HibernateUtil.shutdown();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
@@ -73,19 +76,6 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			/*Profile profile1 = new Profile();
-			profile1.setUserName(profile.getUserName());
-			profile1.setPassword(profile.getPassword());
-			profile1.setGender(profile.getGender());
-			profile1.setDateOfBirth(profile.getDateOfBirth());
-			profile1.setContactNumber(profile.getContactNumber());
-			profile1.setAddress(profile.getAddress());
-			profile1.setEmail(profile.getEmail());
-			profile1.setCountry(profile.getCountry());
-			profile1.setCity(profile.getCity());
-			profile1.setPinCode(profile.getPinCode());
-			profile1.setGaurdian_FirstName(profile.getGaurdian_FirstName());
-			profile1.setGaurdian_LastName(profile.getGaurdian_LastName());*/
 			session.save(profile);
 			session.getTransaction().commit();
 			//HibernateUtil.shutdown();
@@ -110,7 +100,7 @@ public class UserDAOImpl implements UserDAO {
 		patientBMI1.setBmi(w/(h*h));
 		session.save(patientBMI1);
 		session.getTransaction().commit();
-		HibernateUtil.shutdown();
+		//HibernateUtil.shutdown();
 		return true;
 		}
 		catch (Exception e) {
@@ -124,7 +114,7 @@ public class UserDAOImpl implements UserDAO {
 		session.beginTransaction();
 		session.save(bloodCount);
 		session.getTransaction().commit();
-		HibernateUtil.shutdown();
+		//HibernateUtil.shutdown();
 		return true;
 		}
 		catch (Exception e) {
@@ -146,12 +136,22 @@ public class UserDAOImpl implements UserDAO {
 		diabetes1.setRiskofDiabetes(50);
 		session.save(diabetes1);
 		session.getTransaction().commit();
-		HibernateUtil.shutdown();
+		//HibernateUtil.shutdown();
 		return true;
 		}
 		catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
 			return false;
 		}}
-
+	
+	public List<BloodCount> bloodCount(String id)
+	{
+		//BloodCount bloodCount= new BloodCount();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		String selQuery = ("select * from Blood_Count b where b.patientId='"+id+"'");
+         Query query = session.createSQLQuery(selQuery);
+         return query.list();
+		
+	}
 }

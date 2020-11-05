@@ -3,6 +3,8 @@
  */
 package com.hcl.phmp.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,20 +34,21 @@ public class BloodCountController {
 		if (result.hasErrors()) {
 			return new ModelAndView("bloodCount");
 		} else {
-			if (userService.bloodCount(bloodCount))
-				return new ModelAndView("bloodCount");
-			else
-				return new ModelAndView("loginFailed");
+			if (userService.bloodCount(bloodCount)) {
+				ModelAndView mav = new ModelAndView();
+				List<BloodCount> list = userService.bloodCount(bloodCount.getPatientId());
+				mav.addObject("list", list);
+				mav.setViewName("bloodCountDisplay");
+				return mav;
+			} else
+				return new ModelAndView("loginFailed"); 
 		}
 	}
 
 	@RequestMapping("/bloodCount")
-    public ModelAndView add() {
-        // return new ModelAndView("redirect:user/login");
-        return new ModelAndView("bloodCount", "bloodCount", new BloodCount());
+	public ModelAndView add() {
+		return new ModelAndView("bloodCount", "bloodCount", new BloodCount());
 
- 
-
-    }
+	}
 
 }

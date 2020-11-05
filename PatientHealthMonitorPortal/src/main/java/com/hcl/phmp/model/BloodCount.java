@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 public class BloodCount {
 	@Id
 	@Column(name="patientId")
-	private String PatientId;
+	private String patientId;
 	@Column
 	private int rbc;
 	@Column
@@ -30,19 +30,25 @@ public class BloodCount {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	/**
 	 * @return the patientId
 	 */
 	public String getPatientId() {
-		return PatientId;
+		return patientId;
 	}
+
+
 
 	/**
 	 * @param patientId the patientId to set
 	 */
 	public void setPatientId(String patientId) {
-		PatientId = patientId;
+		this.patientId = patientId;
 	}
+
+
 
 	/**
 	 * @return the rbc
@@ -91,7 +97,7 @@ public class BloodCount {
 	 */
 	@Override
 	public String toString() {
-		return "BloodCount [PatientId=" + PatientId + ", rbc=" + rbc + ", wbc=" + wbc + ", platelet=" + platelet + "]";
+		return "BloodCount [PatientId=" + patientId + ", rbc=" + rbc + ", wbc=" + wbc + ", platelet=" + platelet + "]";
 	}
 
 }
