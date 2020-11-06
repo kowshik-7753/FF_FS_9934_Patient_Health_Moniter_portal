@@ -60,6 +60,18 @@ public class UserServiceImpl implements UserService {
 		UserDAOImpl userDAO = new UserDAOImpl();
 		return userDAO.bloodCount(id);
 	}
+
+	@Override
+	public List<PatientBMI> patientBMI(String id) {
+		UserDAOImpl userDAO = new UserDAOImpl();
+		return userDAO.patientBMI(id);
+	}
+
+	@Override
+	public List<Diabetes> diabetes(String id) {
+		UserDAOImpl userDAO = new UserDAOImpl();
+		return userDAO.diabetes(id);
+	}
 	
    
 }

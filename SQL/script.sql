@@ -4,7 +4,7 @@
 #autor :kotha kowshik.                                     #
 #This Script contains the database Patient_health_monitor  #
 #It contains two tables users,patient_profile,patientBMI   #
-#Blood_count,Glucose_levels,Diabaties.                     #												           #
+#Blood_count,Diabaties.                                    #												           #
 #######################End Script ##########################
 
 /* creating database for patient_health_moniter*/
@@ -65,13 +65,6 @@ Platelet INTEGER NOT NULL,
 FOREIGN KEY(patientID) REFERENCES Users(loginID)
 );
 
-/* creating table Glucose_levels*/
-CREATE TABLE Glucose_levels(
-patientID VARCHAR(20) NOT NULL,
-time DATETIME NOT NULL,
-bloodGlucoseLvels INTEGER NOT NULL,
-FOREIGN KEY(patientID) REFERENCES Users(loginID)
-);
 
 /* creating table for Diabetes*/
 CREATE TABLE Diabetes(

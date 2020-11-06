@@ -2,6 +2,8 @@ package com.hcl.phmp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -11,10 +13,12 @@ import javax.validation.constraints.NotEmpty;
  *
  */
 @Entity
-@Table(name="Blood_Count")
+@Table(name = "Blood_Count")
 public class BloodCount {
 	@Id
-	@Column(name="patientId")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	 private int id;
+	@Column(name = "patientId")
 	private String patientId;
 	@Column
 	private int rbc;
@@ -30,8 +34,6 @@ public class BloodCount {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
 	/**
 	 * @return the patientId
 	 */
@@ -39,16 +41,13 @@ public class BloodCount {
 		return patientId;
 	}
 
-
-
 	/**
-	 * @param patientId the patientId to set
+	 * @param patientId
+	 *            the patientId to set
 	 */
 	public void setPatientId(String patientId) {
 		this.patientId = patientId;
 	}
-
-
 
 	/**
 	 * @return the rbc
@@ -58,7 +57,8 @@ public class BloodCount {
 	}
 
 	/**
-	 * @param rbc the rbc to set
+	 * @param rbc
+	 *            the rbc to set
 	 */
 	public void setRbc(int rbc) {
 		this.rbc = rbc;
@@ -72,7 +72,8 @@ public class BloodCount {
 	}
 
 	/**
-	 * @param wbc the wbc to set
+	 * @param wbc
+	 *            the wbc to set
 	 */
 	public void setWbc(int wbc) {
 		this.wbc = wbc;
@@ -86,13 +87,16 @@ public class BloodCount {
 	}
 
 	/**
-	 * @param platelet the platelet to set
+	 * @param platelet
+	 *            the platelet to set
 	 */
 	public void setPlatelet(int platelet) {
 		this.platelet = platelet;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

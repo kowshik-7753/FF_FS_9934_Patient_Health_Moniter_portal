@@ -19,25 +19,18 @@ public class Diabetes {
 	@Id
 	@Column(name = "PatientId")
 	private String patientId;
-	@NotEmpty
 	@Column
 	private float bmi;
-	@NotEmpty
 	@Column
 	private float bPSystolicValue;
-	@NotEmpty
 	@Column
 	private float bPDiastolicValue;
-	@NotEmpty
 	@Column
 	private float fastingGlucose;
-	@NotEmpty
 	@Column
 	private float hDLCholesterol;
-	@NotEmpty
 	@Column
 	private float serumTriglycerides;
-	@NotEmpty
 	@Column
 	private float riskofDiabetes;
 

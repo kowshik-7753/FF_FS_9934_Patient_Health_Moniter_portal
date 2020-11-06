@@ -1,5 +1,7 @@
 package com.hcl.phmp.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hcl.phmp.model.BloodCount;
 import com.hcl.phmp.model.Login;
 import com.hcl.phmp.model.PatientBMI;
 import com.hcl.phmp.service.UserServiceImpl;
@@ -24,8 +27,13 @@ public class PatientBMIController {
 		if (result.hasErrors()) {
 			return new ModelAndView("bmiCalculator");
 		} else {
-			if (userService.bmiCalculator(patientBMI))
-				return new ModelAndView("home");
+			if (userService.bmiCalculator(patientBMI)) {
+					ModelAndView mav = new ModelAndView();
+					List<PatientBMI> list = userService.patientBMI(patientBMI.getPatientId());
+					mav.addObject("list",list);
+					mav.setViewName("patientBMIDisplay");
+					return mav;
+			}
 			else
 				return new ModelAndView("loginFailed");
 		}

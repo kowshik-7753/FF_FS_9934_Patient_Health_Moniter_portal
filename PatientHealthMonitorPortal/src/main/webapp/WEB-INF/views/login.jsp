@@ -14,9 +14,9 @@
 		<form:form action="login" method="post" modelAttribute="login">
 			<table border=1>
 				<tr>
-					<td>User Name</td>
+					<td>Login Id</td>
 					<td><form:input type="text" path="userName" style="width: 120px"
-							placeholder="Enter your user Name" /><font color="red"><form:errors
+							placeholder="Enter Login Id" /><font color="red"><form:errors
 								path="userName"></form:errors></font></td>
 				</tr>
 				<tr>

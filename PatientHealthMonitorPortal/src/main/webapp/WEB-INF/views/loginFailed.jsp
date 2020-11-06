@@ -7,6 +7,6 @@
 <title>Login Failed</title>
 </head>
 <body>
-<% out.print("Dear User, we are unable to login into your account!!!"); %>
+<% out.print("Dear User, we are unable to Access your account!!!"); %>
 </body>
 </html>

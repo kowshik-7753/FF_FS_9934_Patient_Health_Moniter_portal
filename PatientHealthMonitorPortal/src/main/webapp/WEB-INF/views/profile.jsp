@@ -59,7 +59,7 @@
 				<tr>
 					<td>Country</td>
 					<td><form:input type="text" path="country"
-							style="width: 120px" placeholder="Enter Country" /><font
+							style="width: 170px" placeholder="Enter Country" /><font
 						color="red"><form:errors path="country"></form:errors></font></td>
 				</tr>
 				<tr>

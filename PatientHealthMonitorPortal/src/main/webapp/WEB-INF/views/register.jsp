@@ -50,7 +50,7 @@
 				<tr>
 					<td>Contact Number</td>
 					<td><form:input type="text" path="contactNumber"
-							style="width: 170px" placeholder="Enter Contact Number" /><font
+							style="width: 180px" placeholder="Enter Contact Number" /><font
 						color="red"><form:errors path="contactNumber"></form:errors></font></td>
 				</tr>
 				<tr>
@@ -61,7 +61,7 @@
 				</tr>
 				<tr>
 					<td>Address</td>
-					<td><form:textarea rows="4" cols="18" path="address"></form:textarea><font
+					<td><form:textarea rows="4" cols="20" path="address"></form:textarea><font
 						color="red"><form:errors path="address"></form:errors></font></td>
 				</tr>
 				<tr>

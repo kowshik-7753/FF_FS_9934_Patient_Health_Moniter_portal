@@ -27,4 +27,8 @@ public interface UserDAO {
 	boolean diabetes(Diabetes diabetes);
 	
 	List<BloodCount> bloodCount(String id);
+	
+	List<PatientBMI> patientBMI(String id);
+	
+	List<Diabetes> diabetes(String id);
 }
