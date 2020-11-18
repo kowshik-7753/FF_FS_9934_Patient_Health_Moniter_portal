@@ -1,0 +1,18 @@
+class Add
+{
+
+protected int add(int i,int j,int k)
+{
+
+ if(i>0&&i>0&&k>0)
+{
+
+   return i+j+k;
+
+  }
+
+  return 0;
+
+ }
+
+}
