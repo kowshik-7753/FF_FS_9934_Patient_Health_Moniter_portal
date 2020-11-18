@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div align="center">
+	<h1>Diabetes</h1>
 		<form:form action="diabetes" method="post" modelAttribute="diabetes">
 			<table border=1>
 				<tr>

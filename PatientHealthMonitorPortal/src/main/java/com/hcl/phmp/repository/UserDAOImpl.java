@@ -27,10 +27,9 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			Session session = HibernateUtil.getSessionFactory().openSession();
 			session.beginTransaction();
-			String str = user.getLastName();
 
 			Users user1 = new Users();
-			user1.setUserId("PHMP" + str.substring(0, 3));
+			user1.setUserId(user.getLastName());
 			user1.setFirstName(user.getFirstName());
 			user1.setLastName(user.getLastName());
 			user1.setPassword(user.getPassword());

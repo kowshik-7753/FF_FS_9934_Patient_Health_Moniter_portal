@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div align="center">
+	<h1>Blood Count</h1>
 		<form:form action="bloodCount" method="post" modelAttribute="bloodCount">
 			<table border=1>
 				<tr>

@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div align="center">
+	<h1>BMI Claculator</h1>
 		<form:form action="bmiCalculator" method="post" modelAttribute="bmiCalculator">
 			<table border=1>
 				<tr>
