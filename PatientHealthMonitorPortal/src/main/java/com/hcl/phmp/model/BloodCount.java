@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 /**
  * @author kowshik.kotha
@@ -26,12 +25,9 @@ public class BloodCount {
 	private int wbc;
 	@Column
 	private int platelet;
-
-	/**
-	 * 
-	 */
+	
 	public BloodCount() {
-		// TODO Auto-generated constructor stub
+		//default constructor.
 	}
 
 	/**

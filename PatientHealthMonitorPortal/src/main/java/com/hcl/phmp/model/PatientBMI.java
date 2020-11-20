@@ -26,8 +26,9 @@ private float weight;
 private float bmi;
 	@Column
 private String currentDate;
+	
 	public PatientBMI() {
-		// TODO Auto-generated constructor stub
+		//default constructor.
 	}
 	/**
 	 * @return the patientId

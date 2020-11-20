@@ -39,7 +39,6 @@ public class LoginController {
 
 	@RequestMapping("/login")
     public ModelAndView add() {
-        // return new ModelAndView("redirect:user/login");
         return new ModelAndView("login", "login", new Login());
 
  

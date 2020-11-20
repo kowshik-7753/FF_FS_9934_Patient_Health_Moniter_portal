@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hcl.phmp.model.Diabetes;
-import com.hcl.phmp.model.PatientBMI;
-import com.hcl.phmp.model.Profile;
 import com.hcl.phmp.service.UserServiceImpl;
 
 @Controller
@@ -41,7 +39,6 @@ public class DiabetesController {
 	}
 	@RequestMapping("/diabetes")
 	public ModelAndView add() {
-		// return new ModelAndView("redirect:user/registration");
 		return new ModelAndView("diabetes", "diabetes", new Diabetes());
 
 	}

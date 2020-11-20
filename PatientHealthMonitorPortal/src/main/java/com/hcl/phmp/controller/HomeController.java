@@ -14,6 +14,5 @@ public class HomeController {
 	@RequestMapping("/")
 	public ModelAndView home() {
 		return new ModelAndView("redirect:user/login");
-		// return new ModelAndView("registration");
 	}
 }

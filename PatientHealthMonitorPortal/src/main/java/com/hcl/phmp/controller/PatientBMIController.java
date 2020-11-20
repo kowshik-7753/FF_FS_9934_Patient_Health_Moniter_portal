@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.hcl.phmp.model.BloodCount;
-import com.hcl.phmp.model.Login;
 import com.hcl.phmp.model.PatientBMI;
 import com.hcl.phmp.service.UserServiceImpl;
 @Controller
@@ -40,7 +37,6 @@ public class PatientBMIController {
 	}
 	@RequestMapping("/bmiCalculator")
     public ModelAndView add() {
-        // return new ModelAndView("redirect:user/login");
         return new ModelAndView("bmiCalculator", "bmiCalculator", new PatientBMI());
 
 	}

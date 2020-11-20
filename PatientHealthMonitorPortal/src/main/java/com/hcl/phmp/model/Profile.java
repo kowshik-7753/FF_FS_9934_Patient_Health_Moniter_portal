@@ -44,14 +44,13 @@ private int pinCode;
 @Column
 private String gender;
 @Column
-private String guardian_FirstName;
+private String guardianFirstName;
 @Column()
-private String guardian_LastName;
-
+private String guardianLastName;
 
 	
 	public Profile() {
-		// TODO Auto-generated constructor stub
+		//default constructor.
 	}
 
 
@@ -230,8 +229,8 @@ private String guardian_LastName;
 	/**
 	 * @return the guardian_FirstName
 	 */
-	public String getGuardian_FirstName() {
-		return guardian_FirstName;
+	public String getGuardianFirstName() {
+		return guardianFirstName;
 	}
 
 
@@ -239,8 +238,8 @@ private String guardian_LastName;
 	/**
 	 * @param guardian_FirstName the guardian_FirstName to set
 	 */
-	public void setGuardian_FirstName(String guardian_FirstName) {
-		this.guardian_FirstName = guardian_FirstName;
+	public void setGuardianFirstName(String guardianFirstName) {
+		this.guardianFirstName = guardianFirstName;
 	}
 
 
@@ -248,8 +247,8 @@ private String guardian_LastName;
 	/**
 	 * @return the guardian_LastName
 	 */
-	public String getGuardian_LastName() {
-		return guardian_LastName;
+	public String getGuardianLastName() {
+		return guardianLastName;
 	}
 
 
@@ -257,8 +256,8 @@ private String guardian_LastName;
 	/**
 	 * @param guardian_LastName the guardian_LastName to set
 	 */
-	public void setGuardian_LastName(String guardian_LastName) {
-		this.guardian_LastName = guardian_LastName;
+	public void setGuardianLastName(String guardianLastName) {
+		this.guardianLastName = guardianLastName;
 	}
 
 
@@ -283,8 +282,8 @@ private String guardian_LastName;
 	public String toString() {
 		return "Profile [userName=" + userName + ", password=" + password + ", dateOfBirth=" + dateOfBirth + ", email="
 				+ email + ", contactNumber=" + contactNumber + ", address=" + address + ", city=" + city + ", country="
-				+ country + ", pinCode=" + pinCode + ", gender=" + gender + ", gaurdianFistName=" + guardian_FirstName
-				+ ", GaurdianLastName=" + guardian_LastName + "]";
+				+ country + ", pinCode=" + pinCode + ", gender=" + gender + ", gaurdianFistName=" + guardianFirstName
+				+ ", GaurdianLastName=" + guardianLastName + "]";
 	}
 
 }

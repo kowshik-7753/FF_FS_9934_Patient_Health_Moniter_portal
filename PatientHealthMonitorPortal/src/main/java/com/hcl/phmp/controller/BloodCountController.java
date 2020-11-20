@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hcl.phmp.model.BloodCount;
-import com.hcl.phmp.model.Login;
 import com.hcl.phmp.service.UserServiceImpl;
 
 /**
@@ -37,7 +36,6 @@ public class BloodCountController {
 			if (userService.bloodCount(bloodCount)) {
 				ModelAndView mav = new ModelAndView();
 				List<BloodCount> list = userService.bloodCount(bloodCount.getPatientId());
-				//list.stream().forEach(var->{System.out.println(var.getRbc()+" "+var.getWbc());});
 				mav.addObject("list", list);
 				mav.setViewName("bloodCountDisplay");
 				return mav;

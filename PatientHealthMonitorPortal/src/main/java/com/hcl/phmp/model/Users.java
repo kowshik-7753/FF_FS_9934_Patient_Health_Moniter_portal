@@ -2,8 +2,6 @@ package com.hcl.phmp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -17,7 +15,6 @@ import javax.validation.constraints.NotEmpty;
 @Table(name="Users")
 public class Users {
 @Id
-//@GeneratedValue(strategy = GenerationType.AUTO)
 @Column(name="loginId")
 private String userId;
 @NotEmpty
@@ -48,8 +45,9 @@ private int zipCode;
 @NotEmpty
 @Column
 private String city;
+
 	public Users() {
-		// TODO Auto-generated constructor stub
+		//default constructor.
 	}
 	/**
 	 * @return the loginId

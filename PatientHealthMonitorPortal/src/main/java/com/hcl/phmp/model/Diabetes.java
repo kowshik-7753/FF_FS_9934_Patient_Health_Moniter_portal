@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 /**
  * @author kowshik.kotha
@@ -34,11 +33,9 @@ public class Diabetes {
 	@Column
 	private float riskofDiabetes;
 
-	/**
-	 * 
-	 */
+	
 	public Diabetes() {
-		// TODO Auto-generated constructor stub
+		//default constructor.
 	}
 
 	/**

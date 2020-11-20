@@ -25,12 +25,10 @@ public class UserServiceImpl implements UserService {
 	public boolean register(Users usr) {
 		UserDAOImpl userDAO = new UserDAOImpl();
 		return userDAO.register(usr);
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public boolean login(Login login) {
-		// TODO Auto-generated method stub
 		UserDAOImpl userDAO = new UserDAOImpl();
 		return userDAO.login(login);
 	}

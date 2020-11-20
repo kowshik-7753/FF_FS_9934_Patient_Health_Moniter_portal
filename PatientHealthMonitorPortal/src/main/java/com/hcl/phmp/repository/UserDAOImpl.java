@@ -1,6 +1,7 @@
 package com.hcl.phmp.repository;
 
 import java.math.BigInteger;
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -24,8 +25,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean register(Users user) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession();) {
+			
 			session.beginTransaction();
 
 			Users user1 = new Users();
@@ -42,28 +43,26 @@ public class UserDAOImpl implements UserDAO {
 			user1.setCity(user.getCity());
 			session.save(user1);
 			session.getTransaction().commit();
-			// HibernateUtil.shutdown();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
 			return false;
+		}finally {
+			 HibernateUtil.shutdown();
 		}
 	}
 
 	@Override
 	public boolean login(Login login) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession();){
+			
 			session.beginTransaction();
 			String selQuery = ("select count(distinct (loginId)) from users u where u.loginId ='" + login.getUserName()
 					+ "' and u.password='" + login.getPassword() + "'");
 			Query query = session.createSQLQuery(selQuery);
 			Integer temp = ((BigInteger) query.getResultList().get(0)).intValue();
-			if (temp != 0) {
-				return true;
-			} else {
-				return false;
-			}
+			boolean bool = (temp!=0)?true:false;
+			return bool;
 		} catch (Exception e) {
 			System.out.println("Execption occours during fetching" + e.getMessage());
 			return false;
@@ -72,12 +71,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean profile(Profile profile) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+			
 			session.beginTransaction();
 			session.save(profile);
 			session.getTransaction().commit();
-			// HibernateUtil.shutdown();
+			HibernateUtil.shutdown();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
@@ -87,8 +86,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean bmiCalculator(PatientBMI patientBMI) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+			
 			session.beginTransaction();
 			PatientBMI patientBMI1 = new PatientBMI();
 			patientBMI1.setPatientId(patientBMI.getPatientId());
@@ -100,7 +99,7 @@ public class UserDAOImpl implements UserDAO {
 			patientBMI1.setBmi(w / (h * h));
 			session.save(patientBMI1);
 			session.getTransaction().commit();
-			// HibernateUtil.shutdown();
+			 HibernateUtil.shutdown();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
@@ -110,12 +109,11 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean bloodCount(BloodCount bloodCount) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+		try (Session session = HibernateUtil.getSessionFactory().openSession()){
 			session.beginTransaction();
 			session.save(bloodCount);
 			session.getTransaction().commit();
-			// HibernateUtil.shutdown();
+			HibernateUtil.shutdown();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
@@ -125,8 +123,8 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean diabetes(Diabetes diabetes) {
-		try {
-			Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+			
 			session.beginTransaction();
 			Diabetes diabetes1 = new Diabetes();
 			diabetes1.setPatientId(diabetes.getPatientId());
@@ -139,7 +137,7 @@ public class UserDAOImpl implements UserDAO {
 			diabetes1.setRiskofDiabetes(50);
 			session.save(diabetes1);
 			session.getTransaction().commit();
-			// HibernateUtil.shutdown();
+			HibernateUtil.shutdown();
 			return true;
 		} catch (Exception e) {
 			System.out.println("Exception occured during inserting data:" + e);
@@ -148,35 +146,45 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	public List<BloodCount> bloodCount(String id) {
-		// BloodCount bloodCount= new BloodCount();
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 		session.beginTransaction();
 		String selQuery = ("from BloodCount b where b.patientId='" + id + "'");
 		Query query = session.createQuery(selQuery);
-		// System.out.println(query.list());
 		return query.list();
+		}
+		 catch (Exception e) {
+				System.out.println("Exception occured during retreving bloodcount data:" + e);
+				return Collections.emptyList();
+			}
 
 	}
 
 	public List<PatientBMI> patientBMI(String id) {
-		// BloodCount bloodCount= new BloodCount();
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
 		session.beginTransaction();
 		String selQuery = ("from PatientBMI b where b.patientId='" + id + "'");
 		Query query = session.createQuery(selQuery);
-		// System.out.println(query.list());
 		return query.list();
+		}
+		catch (Exception e) {
+			System.out.println("Exception occured during retreving patient bmi data:" + e);
+			return Collections.emptyList();
+		}
+		
 
 	}
 
 	public List<Diabetes> diabetes(String id) {
-		// BloodCount bloodCount= new BloodCount();
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		try(Session session = HibernateUtil.getSessionFactory().openSession()){
 		session.beginTransaction();
 		String selQuery = ("from Diabetes d where d.patientId='" + id + "'");
 		Query query = session.createQuery(selQuery);
-		// System.out.println(query.list());
 		return query.list();
+		}
+		catch (Exception e) {
+			System.out.println("Exception occured during retreving diabetes data:" + e);
+			return Collections.emptyList();
+		}
 
 	}
 }

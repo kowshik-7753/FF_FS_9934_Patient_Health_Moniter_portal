@@ -30,7 +30,6 @@ public class ProfileController {
 	}
 	@RequestMapping("/profile")
 	public ModelAndView add() {
-		// return new ModelAndView("redirect:user/registration");
 		return new ModelAndView("profile", "profile", new Profile());
 
 	}

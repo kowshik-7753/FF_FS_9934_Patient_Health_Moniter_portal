@@ -7,8 +7,10 @@ public class Login {
 private String userName;
 	@NotEmpty
 private String password;
+	
 	public Login() {
-		// TODO Auto-generated constructor stub
+		//default constructor.
+		
 	}
 	/**
 	 * @return the userName

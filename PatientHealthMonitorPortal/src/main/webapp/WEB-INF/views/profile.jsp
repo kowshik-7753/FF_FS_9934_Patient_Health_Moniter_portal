@@ -78,15 +78,15 @@
 				</tr>
 				<tr>
 					<td>Guardian First Name</td>
-					<td><form:input type="text" path="guardian_FirstName"
+					<td><form:input type="text" path="guardianFirstName"
 							style="width: 170px" placeholder="Enter Guardian first Name" /><font
-						color="red"><form:errors path="guardian_FirstName"></form:errors></font></td>
+						color="red"><form:errors path="guardianFirstName"></form:errors></font></td>
 				</tr>
 				<tr>
 					<td>Guardian Last Name</td>
-					<td><form:input type="text" path="guardian_LastName"
+					<td><form:input type="text" path="guardianLastName"
 							style="width: 170px" placeholder="Enter guardian  Last Name" /><font
-						color="red"><form:errors path="guardian_LastName"></form:errors></font></td>
+						color="red"><form:errors path="guardianLastName"></form:errors></font></td>
 				</tr>
 				<tr>
 					<td align="center" colspan="2"><input type="submit"
